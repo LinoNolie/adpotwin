@@ -3,20 +3,15 @@ import Head from 'next/head'
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div>
       <Head>
-        <title>AdpotWin - Windows Adoption Helper</title>
-        <meta name="description" content="A Windows adoption helper project" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>AdpotWin</title>
+        <meta name="description" content="Windows adoption helper" />
       </Head>
-
-      <main style={{ textAlign: 'center' }}>
-        <h1 style={{ color: 'var(--primary-color)' }}>
-          Welcome to AdpotWin
-        </h1>
-        <p>Your Windows adoption journey starts here</p>
+      <main>
+        <h1>Welcome to AdpotWin</h1>
       </main>
-    </>
+    </div>
   )
 }
 
