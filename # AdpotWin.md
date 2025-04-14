@@ -377,3 +377,44 @@ git push -f --verbose --progress origin main
 ```
 
 Note: If push still fails, try pushing in chunks or use GitHub CLI.
+
+## Git Push Recovery Steps
+
+1. Clean and reinitialize:
+```bash
+# Remove git tracking
+rd /s /q .git
+
+# Initialize fresh repository
+git init
+git add .
+git commit -m "Fresh start"
+
+# Set branch and remote
+git branch -M main
+git remote add origin https://github.com/LinoNoLie/adpotwin.git
+
+# Force push
+git push -f origin main
+```
+
+If you get authentication errors:
+```bash
+# Configure git credentials
+git config --global user.name "LinoNoLie"
+git config --global user.email "your-email@example.com"
+```
+
+## Quick Force Push Steps
+
+1. Add current changes:
+```bash
+# Stage and commit changes
+git add .
+git commit -m "Update Next.js configuration"
+
+# Force push
+git push -f origin main
+```
+
+Note: Only use force push if you're sure you want to override the remote repository.
