@@ -1,19 +1,26 @@
 {
   "name": "adpotwin",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A Windows adpot helper project.",
+  "main": "index.js",
   "scripts": {
+    "build": "tsc && next build",
+    "type-check": "tsc --noEmit",
     "dev": "next dev",
-    "build": "next build && touch out/.nojekyll",
-    "start": "next start"
+    "start": "next start",
+    "deploy-gh": "next build && type nul > out/.nojekyll && git add out/ && git commit -m \"Deploy to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "next": "13.4.19",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/node": "22.14.1",
-    "@types/react": "19.1.2",
-    "typescript": "5.8.3"
+    "typescript": "^4.0.0",
+    "@types/node": "^14.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0"
   }
 }
