@@ -2,7 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  distDir: '.next'
+  images: {
+    unoptimized: true
+  },
+  basePath: '/adpotwin'
 }
 
 module.exports = nextConfig

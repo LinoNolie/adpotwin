@@ -208,6 +208,55 @@ npm install
    - Run `npm run type-check` locally to find issues
    - Fix any TypeScript errors in your code
 
+## Vercel Deployment Steps
+
+1. Login to Vercel:
+   - Go to vercel.com/login
+   - Sign in with GitHub
+
+2. Import Repository:
+   - Click "Add New Project" button (top-right corner)
+   - Under "Import Git Repository", find and select "LinoNoLie/adpotwin"
+
+3. Configure Project (on the import page):
+   - In the "Configure Project" screen:
+     - Project Name: leave as "adpotwin"
+     - Framework Preset: should auto-detect "Next.js"
+     - Root Directory: leave as "./" (default)
+   - Expand "Build and Output Settings":
+     - Build Command: `npm run build`
+     - Output Directory: `.next`
+     - Install Command: `npm install`
+   - Leave "Environment Variables" empty
+   - Click "Deploy" button at the bottom
+
+4. After Deploy:
+   - Wait for "Congratulations!" screen
+   - Click "Continue to Dashboard"
+   - Your site will be at adpotwin.vercel.app
+
+## Vercel Deployment Status
+
+1. Current Deployment:
+   - Status: Ready
+   - Environment: Production
+   - Source: main (76d8bf6)
+   - Duration: 3s
+
+2. Active Domains:
+   - Primary: adpotwin.vercel.app
+   - Preview: adpotwin-git-main-linonolies-projects.vercel.app
+   - Branch: adpotwin-5zgxnup53-linonolies-projects.vercel.app
+
+3. Next Steps:
+   - Verify primary domain works: https://adpotwin.vercel.app
+   - Configure custom domain www.adpot.win in Vercel:
+     1. Go to Project Settings > Domains
+     2. Add Domain: www.adpot.win
+     3. Follow Vercel's DNS configuration instructions
+
+Note: Your deployment is successful. Now we can proceed with custom domain setup.
+
 ## GitHub Configuration
 
 1. Verify your GitHub connection:
