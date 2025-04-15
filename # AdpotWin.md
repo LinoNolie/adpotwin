@@ -55,6 +55,27 @@ npx tsc --init
 }
 ```
 
+## Command Prompt Setup
+
+1. Always run commands from project root:
+```bash
+# Navigate to project directory
+cd C:\Users\User\Desktop\adpotwin
+
+# Verify you're in the right place
+dir
+# Should show:
+#   package.json
+#   next.config.js
+#   pages/
+#   etc...
+```
+
+All commands in this documentation should be run from:
+```
+C:\Users\User\Desktop\adpotwin>
+```
+
 ## Git Deployment
 
 1. Stage all changes:
