@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: '/adpotwin',
+  // Only use basePath in production build, not for local development
+  basePath: process.env.NODE_ENV === 'production' ? '/adpotwin' : '',
   images: {
     unoptimized: true
   }

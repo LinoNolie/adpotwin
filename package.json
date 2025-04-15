@@ -4,11 +4,11 @@
   "description": "A Windows adpot helper project.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && next build",
-    "type-check": "tsc --noEmit",
     "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "deploy-gh": "next build && type nul > out/.nojekyll && git add out/ && git commit -m \"Deploy to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
+    "lint": "next lint",
+    "gh-pages": "next build && type nul > out/.nojekyll && mkdir out\\adpotwin || copy out\\index.html out\\adpotwin\\ && git add out/ && git commit -m \"Update GitHub Pages files\" && git push origin main"
   },
   "author": "",
   "license": "ISC",
@@ -18,9 +18,7 @@
     "react-dom": "latest"
   },
   "devDependencies": {
-    "typescript": "^4.0.0",
-    "@types/node": "^14.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0"
+    "eslint": "latest",
+    "eslint-config-next": "latest"
   }
 }
