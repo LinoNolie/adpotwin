@@ -3,6 +3,7 @@ const nextConfig = {
   output: 'export',
   distDir: 'out',
   basePath: '/adpotwin',
+  trailingSlash: true,
   images: {
     unoptimized: true
   }

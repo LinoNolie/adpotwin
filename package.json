@@ -1,15 +1,9 @@
 {
-  "name": "adpotwin",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build"
-  },
-  "dependencies": {
-    "next": "13.4.19",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "predeploy": "next build",
+    "deploy": "touch out/.nojekyll"
   }
 }
