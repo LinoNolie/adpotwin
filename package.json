@@ -1,20 +1,8 @@
 {
-  "name": "adpotwin",
-  "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "^15.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "22.14.1",
-    "@types/react": "19.1.2",
-    "typescript": "5.8.3"
+    "start": "next start",
+    "export": "next build && next export"
   }
 }

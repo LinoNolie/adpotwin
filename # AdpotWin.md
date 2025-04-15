@@ -418,3 +418,71 @@ git push -f origin main
 ```
 
 Note: Only use force push if you're sure you want to override the remote repository.
+
+## Local Development Workflow
+
+1. Daily development cycle:
+```bash
+# Start local development server
+npm run dev   # Site will be at http://localhost:3000
+
+# Make changes to your code and test locally
+# When ready to deploy:
+git add .
+git commit -m "Description of your changes"
+git push origin main   # Vercel will auto-deploy
+```
+
+2. What happens after push:
+- GitHub stores your code
+- Vercel automatically builds and deploys from GitHub
+- Changes appear on:
+  1. adpotwin.vercel.app
+  2. www.adpot.win 
+
+3. No need to touch Porkbun again unless:
+- Changing domain settings
+- Adding new domains
+- DNS configuration issues
+
+## Git Push Rejection Fix
+
+1. First, fetch and merge remote changes:
+```bash
+git fetch origin main
+git pull origin main
+```
+
+2. If there are conflicts, resolve them and:
+```bash
+git add .
+git commit -m "Merge remote changes"
+```
+
+3. Then push your changes:
+```bash
+git push origin main
+```
+
+Alternative if pull fails:
+```bash
+git pull --rebase origin main
+git push origin main
+```
+
+## Deployment Configuration
+
+1. GitHub Pages Deployment:
+```bash
+npm run export  # Creates 'out' directory for GitHub Pages
+```
+
+2. Vercel Deployment Settings:
+- Build Command: `npm run build`
+- Output Directory: `.next`
+- Install Command: `npm install`
+
+Note: The site is available at:
+- GitHub Pages: https://linonolie.github.io/adpotwin/
+- Vercel: https://adpotwin.vercel.app (when fixed)
+- Custom Domain: www.adpot.win (when DNS propagates)
