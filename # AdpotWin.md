@@ -556,3 +556,32 @@ Note: The site is available at:
 - GitHub Pages: https://linonolie.github.io/adpotwin/
 - Vercel: https://adpotwin.vercel.app (when fixed)
 - Custom Domain: www.adpot.win (when DNS propagates)
+
+## GitHub Pages Directory Structure
+
+Required structure for GitHub Pages deployment:
+```
+out/                    # Root directory for GitHub Pages
+├── .nojekyll          # Tells GitHub Pages not to use Jekyll
+├── index.html         # Entry point (redirects to /adpotwin/)
+├── _next/             # Next.js assets
+│   └── static/        # Static assets
+│       ├── chunks/    # JavaScript bundles
+│       ├── css/       # Stylesheets
+│       └── media/     # Images, fonts
+└── adpotwin/         # Your app's base path
+    └── index.html    # Your app's main page
+```
+
+To generate this structure:
+1. First create these files:
+   - /out/.nojekyll (empty file)
+   - /out/index.html (redirect to /adpotwin/)
+   - /out/adpotwin/index.html (your app)
+
+2. Build will generate:
+   - _next/static/chunks/ (JS files)
+   - _next/static/css/ (styles)
+   - _next/static/media/ (assets)
+
+Note: The build process will populate static directories automatically.
