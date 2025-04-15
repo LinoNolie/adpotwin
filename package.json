@@ -1,8 +1,25 @@
 {
+  "name": "adpotwin",
+  "version": "1.0.0",
+  "description": "A Windows adpot helper project.",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build && next export -o out && touch out/.nojekyll"
+    "export": "next build"
+  },
+  "author": "LinoNoLie",
+  "license": "MIT",
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "@types/node": "^14.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0"
   }
 }

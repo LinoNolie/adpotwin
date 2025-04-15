@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  distDir: 'out',
   basePath: '/adpotwin',
   images: {
     unoptimized: true
-  },
-  assetPrefix: '/adpotwin/'
+  }
 }
 
 module.exports = nextConfig
