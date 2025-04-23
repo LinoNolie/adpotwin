@@ -1,4 +1,17 @@
+# Dependencies
 node_modules/
-.DS_Store
-*.zip
+
+# Build outputs
+dist/
 build/
+.next/
+
+# Environment
+.env*
+
+# OS files
+.DS_Store
+*.log
+
+# Archives
+*.zip
