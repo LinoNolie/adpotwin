@@ -1,0 +1,92 @@
+.pool-card {
+  flex: 1;
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  transition: transform 0.3s ease;
+}
+
+.pool-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.pool-card h3 {
+  color: #e3d5ca;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+.pool-icon {
+  margin: 1rem 0;
+  color: #e3d5ca;
+}
+
+.amount-display {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e3d5ca;
+  font-family: 'Orbitron', sans-serif;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.currency {
+  font-size: 1.6rem;
+  color: #e3d5ca;
+  opacity: 1;
+  margin-right: 0.3rem;
+  font-weight: bold;
+}
+
+.timer,
+.players-count {
+  color: #8b7355;
+  font-size: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pool-stats {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.stat-label {
+  color: #8b7355;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.stat-value {
+  color: #e3d5ca;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stat-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem 0;
+}

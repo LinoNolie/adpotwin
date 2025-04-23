@@ -1,0 +1,108 @@
+.payout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.payout-modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.payout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.payout-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.payout-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.amount-field {
+  margin-bottom: 1.5rem;
+}
+
+.amount-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.amount-field input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.1rem;
+}
+
+.payment-methods {
+  margin-bottom: 1.5rem;
+}
+
+.payment-methods label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.method-options {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.payment-method {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-method.selected {
+  border-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.submit-payout {
+  width: 100%;
+  padding: 1rem;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-payout:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.submit-payout:not(:disabled):hover {
+  background: #45a049;
+}

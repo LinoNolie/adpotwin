@@ -1,0 +1,116 @@
+.connection-status {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(51, 51, 51, 0.1);
+  color: #333333;
+  transition: all 0.3s ease;
+}
+
+.connection-status.disconnected {
+  color: #ff8f00;
+}
+
+.connection-status.failed {
+  color: #c62828;
+}
+
+.status-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.connection-status.connected .status-icon {
+  background: #4CAF50;
+}
+
+.connection-status.disconnected .status-icon {
+  background: #FFC107;
+}
+
+.connection-status.failed .status-icon {
+  background: #f44336;
+}
+
+.connection-status.offline .status-icon {
+  background: #666666;
+}
+
+.sync-info {
+  color: #666666;
+  font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+  .connection-status {
+    bottom: 20px;
+    top: auto;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+.connection-status.disconnected {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.connection-status.failed {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.connection-status.offline {
+  background: rgba(102, 102, 102, 0.1);
+  border-color: rgba(102, 102, 102, 0.2);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.connected .status-indicator {
+  background: #4CAF50;
+}
+
+.disconnected .status-indicator {
+  background: #FFC107;
+  animation: pulse 1s infinite;
+}
+
+.failed .status-indicator {
+  background: #F44336;
+}
+
+.status-text {
+  color: inherit;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translate(-50%, -100%); }
+  to { transform: translate(-50%, 0); }
+}

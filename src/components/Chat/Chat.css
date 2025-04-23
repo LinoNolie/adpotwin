@@ -1,0 +1,180 @@
+.chat-container {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(51, 51, 51, 0.1);
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(245, 240, 235, 0.95);
+  border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+.chat-header h3 {
+  color: #333333;
+  font-size: 1rem;
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.online-users {
+  color: #666666;
+  font-size: 0.8rem;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.message-wrapper {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background: rgba(227, 213, 202, 0.1);
+  color: #333333;
+}
+
+.message-wrapper.system {
+  background: rgba(227, 213, 202, 0.2);
+  border-left: 2px solid #8b7355;
+}
+
+.chat-username {
+  font-weight: bold;
+  color: #4CAF50;
+  margin-right: 0.5rem;
+}
+
+.chat-input {
+  background: rgba(245, 240, 235, 0.95);
+  padding: 0.75rem;
+  border-top: 1px solid rgba(51, 51, 51, 0.1);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.chat-input input {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(51, 51, 51, 0.1);
+  color: #333333;
+  padding: 0 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  height: 38px;
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: rgba(227, 213, 202, 0.3);
+}
+
+.chat-input button {
+  padding: 0 1rem;
+  background: #e3d5ca;
+  color: #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+  min-width: 60px;
+  height: 38px;
+}
+
+.chat-input button:hover:not(:disabled) {
+  background: #ede0d4;
+}
+
+.chat-input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-input-wrapper {
+  position: relative;
+}
+
+.rate-limit-indicator {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #e9ecef;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.rate-limit-bar {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.rate-limit-text {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.winner-message {
+  background: rgba(76, 175, 80, 0.1) !important;
+  border-left: 2px solid #4CAF50 !important;
+  animation: slideIn 0.3s ease-out;
+}
+
+.winner-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.winner-logo {
+  width: 24px;
+  height: 24px;
+  animation: bounce 0.5s ease infinite;
+}
+
+.winner-name {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.winner-amount {
+  font-weight: bold;
+  color: #4CAF50;
+  margin: 0 0.25rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}

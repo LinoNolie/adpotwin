@@ -1,0 +1,70 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      
+<<<<<<< HEAD
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Build
+        run: npm run build
+        
+      - name: Ensure dist directory
+        run: |
+          mkdir -p dist
+          cp -r dist/* . || true
+          
+      - name: Create 404.html
+        run: cp dist/index.html dist/404.html
+        
+      - name: Verify build content
+        run: |
+          echo "Checking build output..."
+          ls -la dist
+          echo "Checking for index.html..."
+          cat dist/index.html | head -n 5
+          echo "Checking assets..."
+          ls -la dist/assets || echo "No assets directory found"
+        
+      - name: Prepare for deployment
+        run: |
+          cp dist/index.html dist/404.html
+      
+      - name: Deploy to GitHub Pages
+=======
+      - name: Deploy
+>>>>>>> ee0173f (Fix deployment configuration)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # Change to your build output directory
+          force_orphan: true
+          cname: adpot.win
+<<<<<<< HEAD
+          enable_jekyll: false
+          allow_empty_commit: true
+          
+      - name: Verify deployment
+        run: |
+          echo "Deployment completed"
+          echo "Checking repository pages branch..."
+          git ls-remote --heads origin gh-pages
+          echo "Please check https://adpot.win after a few minutes"
+=======
+          commit_message: "Deploy to GitHub Pages"
+>>>>>>> ee0173f (Fix deployment configuration)
