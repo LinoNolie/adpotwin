@@ -1,0 +1,26 @@
+# A Records for GitHub Pages
+Type: A
+Host: @
+Answer: 185.199.108.153
+TTL: 600
+
+Type: A
+Host: @
+Answer: 185.199.109.153
+TTL: 600
+
+Type: A
+Host: @
+Answer: 185.199.110.153
+TTL: 600
+
+Type: A
+Host: @
+Answer: 185.199.111.153
+TTL: 600
+
+# CNAME Record for www subdomain
+Type: CNAME
+Host: www
+Answer: linonolie.github.io
+TTL: 600

@@ -1,3 +1,4 @@
 baseurl: ""
-url: "https://adpot.win"
+url: "https://www.adpot.win"
 include: [".nojekyll"]
+enforce_ssl: www.adpot.win

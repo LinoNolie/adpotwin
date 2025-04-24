@@ -1,5 +1,5 @@
-export { default as ImageUploader } from './ImageUploader';
-export { default as ImageGallery } from './ImageGallery';
-export { default as MetaverseObjectPreview } from './MetaverseObjectPreview';
-export { default as App } from './App';
-export { default as HomeSection } from './sections/HomeSection/HomeSection';
+export { default as Header } from './Header/Header';
+export { default as Pool } from './Pool/Pool';
+export { default as Loading } from './Loading/Loading';
+export { default as JackpotCard } from './JackpotCard/JackpotCard';
+export { default as Chat } from './Chat/Chat';

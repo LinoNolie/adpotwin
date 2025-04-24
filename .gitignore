@@ -1,17 +1,19 @@
 # Dependencies
 node_modules/
+.env
 
-# Build outputs
+# Build
 dist/
 build/
 .next/
 
-# Environment
-.env*
-
-# OS files
+# System
 .DS_Store
 *.log
+
+# IDE
+.vscode/
+.idea/
 
 # Archives
 *.zip

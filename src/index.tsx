@@ -1,20 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import './styles/index.css';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './styles/index.css'
+import { AuthProvider } from './contexts/AuthContext'
+import { JackpotProvider } from './contexts/JackpotContext'
 
-// Add console log for debugging
-console.log('Application starting...');
-
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <AuthProvider>
+      <JackpotProvider>
+        <App />
+      </JackpotProvider>
+    </AuthProvider>
   </React.StrictMode>
-);
+)

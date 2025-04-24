@@ -8,28 +8,26 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    extensions: ['.js', '.ts', '.jsx', '.tsx']
   },
   server: {
     port: 3000,
-    proxy: {
-      '/api': {
-        target: 'https://api.adpot.win',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
+    headers: {
+      'Content-Type': 'application/javascript; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff'
     }
   },
-  define: {
-    // Ensure environment variables are properly handled
-    'process.env': {}
-  },
-  // Add proper CORS handling
-  optimizeDeps: {
-    exclude: ['@react-three/fiber', '@react-three/drei']
-  },
-  base: '/',
+  base: '/adpotwin/',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    rollupOptions: {
+      input: 'src/index.tsx',
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name].[hash].js',
+        assetFileNames: 'assets/[name].[ext]'
+      }
+    }
   }
 });

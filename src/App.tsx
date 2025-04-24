@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { JackpotProvider } from './contexts/JackpotContext';
 import Header from './components/Header/Header';
@@ -12,14 +12,16 @@ const App: React.FC = () => {
     <ErrorBoundary>
       <AuthProvider>
         <JackpotProvider>
-          <div className="app">
-            <Header />
-            <main className="main-content">
-              <Routes>
-                <Route path="/" element={<HomeSection />} />
-              </Routes>
-            </main>
-          </div>
+          <Router>
+            <div className="app">
+              <Header />
+              <main className="main-content">
+                <Routes>
+                  <Route path="/" element={<HomeSection />} />
+                </Routes>
+              </main>
+            </div>
+          </Router>
         </JackpotProvider>
       </AuthProvider>
     </ErrorBoundary>

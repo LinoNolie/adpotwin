@@ -10,15 +10,26 @@ const server = http.createServer((req, res) => {
     
     switch (extname) {
         case '.js':
-            contentType = 'text/javascript';
+        case '.jsx':
+        case '.ts':
+        case '.tsx':
+        case '.mjs':
+            contentType = 'application/javascript; charset=utf-8';
+            res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
             break;
         case '.css':
-            contentType = 'text/css';
+            contentType = 'text/css; charset=utf-8';
+            break;
+        case '.svg':
+            contentType = 'image/svg+xml';
             break;
         case '.png':
             contentType = 'image/png';
             break;
     }
+    
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('X-Content-Type-Options', 'nosniff');
     
     fs.readFile(filePath, (error, content) => {
         if (error) {
