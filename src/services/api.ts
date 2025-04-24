@@ -13,6 +13,10 @@ interface RequestOptions extends RequestInit {
   priority?: number;
 }
 
+export interface CustomRequestInit extends Omit<RequestInit, 'cache'> {
+  cache?: RequestCache;
+}
+
 // Check if we're online
 const isOnline = () => navigator.onLine;
 
@@ -111,6 +115,10 @@ async function fetchWithCache(url: string, options?: RequestOptions): Promise<an
       }
     }, options?.priority || 0);
   });
+}
+
+export async function fetchWithRetry(url: string, options?: CustomRequestInit) {
+  // ...existing code...
 }
 
 export const api = {

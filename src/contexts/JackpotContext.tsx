@@ -3,8 +3,7 @@ import { offlineSync } from '../utils/offlineSync';
 import { JackpotState, JackpotWin } from '../types/types';
 
 interface JackpotContextType {
-  jackpots: JackpotState;
-  history: JackpotWin[];
+  state: JackpotState;
   dispatch: React.Dispatch<JackpotAction>;
 }
 
@@ -16,18 +15,19 @@ type JackpotAction =
 const initialState: JackpotState = {
   hourly: {
     amount: 0,
-    timer: '59:59',
+    timer: '00:00',
     players: 0
   },
   yearly: {
     amount: 0,
-    timer: '365d 00:00:00',
+    timer: '00:00',
     players: 0
   },
   random: {
     amount: 0,
     players: 0
-  }
+  },
+  history: []
 };
 
 const DEFAULT_STATE = {
@@ -95,7 +95,7 @@ export const JackpotProvider: React.FC<{ children: React.ReactNode }> = ({ child
   }
 
   return (
-    <JackpotContext.Provider value={{ jackpots: state, dispatch }}>
+    <JackpotContext.Provider value={{ state, dispatch }}>
       {children}
     </JackpotContext.Provider>
   );

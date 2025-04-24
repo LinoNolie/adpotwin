@@ -10,11 +10,15 @@ export class WebSocketService {
   private ws: WebSocket | null = null;
   private reconnectAttempts = 0;
   private messageQueue: any[] = [];
-  private listeners: Map<string, Function[]> = new Map();
+  private listeners: Map<string, ((data: any) => void)[]> = new Map();
   private subscribers: Map<string, Function[]> = new Map();
   private isOffline = false;
   private mockMode = process.env.NODE_ENV === 'development';
   private subscriptions: Map<string, Function[]> = new Map();
+
+  constructor() {
+    this.setupListeners = this.setupListeners.bind(this);
+  }
 
   connect() {
     if (this.mockMode) {
@@ -108,6 +112,11 @@ export class WebSocketService {
       this.ws = null;
       this.emitConnectionStatus('disconnected');
     }
+  }
+
+  public setupListeners(): void {
+    if (!this.ws) return;
+    // ...existing code...
   }
 }
 

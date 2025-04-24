@@ -12,6 +12,7 @@ import { chatLimiter, adWatchLimiter } from '../../../utils/rateLimit';
 import { chatRateLimiter } from '../../../utils/rateLimitManager';
 import ConnectionStatus from '../../ConnectionStatus/ConnectionStatus';
 import { offlineSync } from '../../../utils/offlineSync';
+import { useAuth } from '@/contexts/AuthContext';
 
 // Register ChartJS components
 import {
@@ -44,6 +45,12 @@ interface JackpotWin {
 
 const HomeSection: React.FC = () => {
   const { jackpots, dispatch } = useJackpot();
+  const { user } = useAuth();
+  const poolLabels: Record<string, string> = {
+    hourly: 'Hourly Pool',
+    yearly: 'Yearly Pool',
+    random: 'Random Pool'
+  };
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Changed from let to useState
   const [isPlaying, setIsPlaying] = useState(false);
   const [showFaq, setShowFaq] = useState(false);
@@ -817,6 +824,10 @@ const HomeSection: React.FC = () => {
   const getRandomTimer = () => {
     const maxTime = 1.5 * 365 * 24 * 60 * 60 * 1000; // 1.5 years in ms
     return Math.floor(Math.random() * maxTime);
+  };
+
+  const handlePotAction = (type: PoolType) => {
+    dispatch({ type: 'RESET_JACKPOT', potType: type });
   };
 
   if (jackpotsLoading) {

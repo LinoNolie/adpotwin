@@ -2,15 +2,12 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-interface ProtectedRouteProps {
+interface Props {
+  isAdmin?: boolean;
   children: React.ReactNode;
-  requireAdmin?: boolean;
 }
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ 
-  children, 
-  requireAdmin = false 
-}) => {
+export default function ProtectedRoute({ isAdmin: requireAdmin, children }: Props) {
   const { isAuthenticated, isAdmin } = useAuth();
 
   if (!isAuthenticated || (requireAdmin && !isAdmin)) {

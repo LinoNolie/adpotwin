@@ -2,12 +2,23 @@ export type SocialProvider = 'google' | 'facebook' | 'twitter';
 
 export type PoolType = 'hourly' | 'yearly' | 'random';
 
+export interface PoolLabels {
+  [key in PoolType]: string;
+}
+
+export interface PoolData {
+  [key in PoolType]: number[];
+}
+
+export interface PoolColors {
+  [key in PoolType]: string;
+}
+
 export interface JackpotState {
   hourly: { amount: number; timer: string; players?: number };
   yearly: { amount: number; timer: string; players?: number };
   random: { amount: number; players: number };
   history: JackpotWin[];
-  jackpots?: any;
 }
 
 export interface JackpotWin {
@@ -34,17 +45,10 @@ export interface AuthContextType {
   isLoading: boolean;
   isAuthenticated: boolean;
   isAdmin: boolean;
+  socialLogin?: (provider: SocialProvider) => Promise<void>;
   login: (username: string, password: string) => Promise<void>;
   register: (username: string, email: string, password: string) => Promise<void>;
   logout: () => void;
-  socialLogin?: (provider: SocialProvider) => Promise<void>;
-}
-
-export interface PoolLabels {
-  [key: string]: string;
-  hourly: string;
-  yearly: string;
-  random: string;
 }
 
 export interface RequestOptions extends Omit<RequestInit, 'cache'> {
