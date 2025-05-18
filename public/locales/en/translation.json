@@ -1,0 +1,8 @@
+{
+  "welcome": "Welcome",
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  }
+}

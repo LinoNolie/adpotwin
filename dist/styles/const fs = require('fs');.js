@@ -1,0 +1,673 @@
+const fs = require('fs');
+const path = require('path');
+
+const projectRoot = __dirname;
+const directories = [
+    'public/styles',
+    'public/styles/backups',
+    'public/images',
+    'public/js',
+    'src',
+    'dist'
+];
+
+// Create project directories
+directories.forEach(dir => {
+    const fullPath = path.join(projectRoot, dir);
+    if (!fs.existsSync(fullPath)) {
+        fs.mkdirSync(fullPath, { recursive: true });
+        console.log(`Created directory: ${fullPath}`);
+    }
+});
+
+// Create initial CSS file
+const cssContent = `/* Main styles for adpot.win - Created ${new Date().toISOString().split('T')[0]} */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.cyberpunk-header {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: linear-gradient(to right, #0a0a0a, #1a1a1a);
+    border-bottom: 2px solid #ffd700;
+}
+
+.cyberpunk-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cyberpunk-header .logo img {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s;
+    filter: drop-shadow(0 0 10px #ffd700);
+}
+
+.cyberpunk-header .logo img:hover {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); filter: drop-shadow(0 0 10px #ffd700); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 20px #ffd700); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 10px #ffd700); }
+}
+
+.cyberpunk-header .title-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cyberpunk-header .title {
+    font-size: 2.5em;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    margin: 0;
+    text-shadow: 0 0 10px #00ff9d;
+}
+
+.cyberpunk-header .slogan {
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    color: #aaa;
+    margin: 5px 0 0 0;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 100px); /* Full height minus header */
+}
+
+.left-section {
+    width: 100%;
+    padding: 20px;
+}
+
+.right-section {
+    width: 30%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.pot {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: #111;
+    margin-bottom: 10px;
+}
+
+.pot h3 {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.pot .amount {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.pot .chances {
+    font-size: 0.8em;
+    margin: 5px 0;
+}
+
+.pot-chances {
+    font-size: 0.8em;
+    margin: 5px 0;
+    color: #aaa;
+    cursor: help;
+}
+
+.pot-chances:hover {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.last-winner {
+    font-size: 0.8em;
+    margin: 5px 0;
+}
+
+.last-winner ul {
+    list-style: none;
+    padding: 0;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.last-winner li {
+    margin: 2px 0;
+    font-size: 0.8em;
+}
+
+.ad-container iframe {
+    width: 100%;
+    height: 390px; /* Increase height by 30% (300px * 1.3 = 390px) */
+    border: 1px solid #333;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.register-options {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.register-button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.register-button img:hover {
+    transform: scale(1.1);
+}
+
+.register-link {
+    font-size: 0.8em;
+    text-align: center;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.register-link a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.test-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.test-ad-button {
+    padding: 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    color: #fff;
+    background-color: #333;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.test-ad-button:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.1);
+}
+
+#random-pot {
+    margin: 20px 0;
+    background-color: #111;
+}
+
+#random-pot .amount {
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.random-chances {
+    font-size: 0.8em;
+    margin: 5px 0;
+    color: #aaa;
+    cursor: help;
+}
+
+.random-chances:hover {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.user-corner {
+    position: relative;
+    z-index: 1000;
+}
+
+.user-icon {
+    font-size: 24px;
+    cursor: pointer;
+    background: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.user-icon:hover {
+    background: #444;
+}
+
+.login-panel {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #222;
+    padding: 20px;
+    border-radius: 5px;
+    min-width: 250px;
+    border: 1px solid #444;
+}
+
+.login-panel.active {
+    display: block;
+}
+
+.social-login {
+    margin-top: 15px;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+.social-login h3 {
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    background: #222;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.social-btn:hover {
+    background: #333;
+}
+
+.social-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.auth-toggle {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 8px;
+    background: #222;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.toggle-btn.active {
+    background: #333;
+    color: #fff;
+}
+
+.login-form,
+.register-form {
+    display: none;
+}
+
+.login-form.active,
+.register-form.active {
+    display: block;
+}
+
+.login-input {
+    margin-bottom: 8px;
+}
+
+.login-input:invalid {
+    border-color: #ff3333;
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+.user-corner:hover .profile-menu,
+.profile-menu.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.user-info {
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.user-name {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.user-balance {
+    color: #00ff9d;
+    font-size: 14px;
+}
+
+.profile-btn {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    background: #222;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.profile-btn:hover {
+    background: #333;
+}
+
+.logout-btn {
+    border-top: 1px solid #333;
+    margin-top: 8px;
+    padding-top: 12px;
+    color: #ff3333;
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .cyberpunk-header .title {
+        font-size: 2em;
+    }
+
+    .cyberpunk-header .slogan {
+        font-size: 0.9em;
+    }
+
+    .ad-container iframe {
+        height: 200px;
+    }
+
+    .register-options {
+        justify-content: center;
+    }
+
+    .register-button img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .pot {
+        margin: 5px 0;
+        padding: 5px;
+    }
+
+    .pot h3 {
+        font-size: 1em;
+    }
+
+    .test-buttons {
+        gap: 5px;
+    }
+
+    .test-ad-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .user-corner {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .login-panel {
+        min-width: 150px;
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+@keyframes moneyRain {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.money-rain-left, .money-rain-right {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.money-rain-left {
+    left: 0;
+}
+
+.money-rain-right {
+    right: 0;
+}
+
+.money-rain-left::before, .money-rain-right::before {
+    content: '$';
+    position: absolute;
+    color: #666;
+    font-size: 24px;
+    animation: moneyRain 3s linear infinite;
+    opacity: 0;
+}
+
+/* Create multiple money symbols with different delays and positions */
+.money-rain-left::before {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.money-rain-left::after {
+    content: '$';
+    position: absolute;
+    color: #666;
+    font-size: 24px;
+    left: 60%;
+    animation: moneyRain 3s linear infinite;
+    animation-delay: 1.5s;
+}
+
+.money-rain-right::before {
+    right: 30%;
+    animation-delay: 0.5s;
+}
+
+.money-rain-right::after {
+    content: '$';
+    position: absolute;
+    color: #666;
+    font-size: 24px;
+    right: 70%;
+    animation: moneyRain 3s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes potHighlight {
+    0% { border-color: #333; }
+    50% { border-color: #00ff9d; }
+    100% { border-color: #333; }
+}
+
+.pot-highlight {
+    animation: potHighlight 1s ease-out;
+}
+
+.login-notification {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 255, 157, 0.1);
+    border: 1px solid #00ff9d;
+    color: #00ff9d;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.login-notification.show {
+    display: block;
+    opacity: 1;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    border-top: 1px solid #333;
+}
+
+.footer-link {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #ffd700;
+}
+
+.imprint-toggle {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.imprint-toggle:hover {
+    color: #ffd700;
+}
+
+.imprint-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.imprint-content.expanded {
+    max-height: 300px;
+    padding: 20px;
+    border-top: 1px solid #333;
+}
+
+.imprint-content h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.imprint-content p {
+    color: #aaa;
+    margin: 5px 0;
+}
+
+.total-contributions {
+    text-align: center;
+    color: #aaa;
+    padding: 10px 0;
+    font-size: 0.9em;
+    border-top: 1px solid #333;
+    margin-top: 10px;
+}`;
+
+const cssPath = path.join(projectRoot, 'public', 'styles', 'index.css');
+fs.writeFileSync(cssPath, cssContent);
+console.log(`Created CSS file: ${cssPath}`);
+
+console.log('Project structure built successfully!');

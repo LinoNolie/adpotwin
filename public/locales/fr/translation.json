@@ -1,0 +1,8 @@
+{
+  "welcome": "Bienvenue",
+  "menu": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact"
+  }
+}

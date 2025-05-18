@@ -1,0 +1,34 @@
+// ...existing styles...
+
+.video-play-button {
+  background: rgba(227, 213, 202, 0.1);
+  border: 1px solid rgba(227, 213, 202, 0.2);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.video-play-button:hover {
+  transform: scale(1.1);
+  background: rgba(227, 213, 202, 0.2);
+}
+
+.chat-messages {
+  /* Add to existing chat-messages class */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(227, 213, 202, 0.3) transparent;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(227, 213, 202, 0.3);
+  border-radius: 3px;
+}
